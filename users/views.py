@@ -16,6 +16,8 @@ from .serializers import (
 from .models import ConfirmationCode
 import random
 import string
+from users.serializers import CustomTokenOptainSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class AuthorizationAPIView(CreateAPIView):
@@ -102,3 +104,7 @@ class ConfirmUserAPIView(CreateAPIView):
                 'key': token.key
             }
         )
+    
+
+class CustomTokenOptainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenOptainSerializer
