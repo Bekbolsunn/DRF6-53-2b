@@ -54,3 +54,7 @@ class CustomTokenOptainSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token["email"] = user.email
         return token
+    
+
+class GoogleLoginSerializer(serializers.Serializer):
+    code = serializers.CharField()
