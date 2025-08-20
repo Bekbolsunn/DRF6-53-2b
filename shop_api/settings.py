@@ -178,6 +178,14 @@ CACHES = {
     }
 }
 
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/6"
+CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/6"
+
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP server host
+EMAIL_PORT = 587  # SMTP server port (587 for TLS, 465 for SSL)
+EMAIL_USE_TLS = True  # True for TLS, False for SSL
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER") # SMTP server username
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD") # SMTP server password
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

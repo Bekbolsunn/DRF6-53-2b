@@ -18,6 +18,7 @@ import random
 import string
 from users.serializers import CustomTokenOptainSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from users.tasks import send_otp_email
 
 
 class AuthorizationAPIView(CreateAPIView):
@@ -70,6 +71,8 @@ class RegistrationAPIView(CreateAPIView):
                 user=user,
                 code=code
             )
+            send_otp_email.delay(email, code)
+        
 
         return Response(
             status=status.HTTP_201_CREATED,
